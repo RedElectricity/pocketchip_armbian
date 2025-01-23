@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build Image
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Rebuild Armbian
+        uses: armbian/build@v25.2.0-trunk.357
+        with:
+          # GitHub installation access token
+          armbian_token: "${{ secrets.GITHUB_TOKEN }}"
+          armbian_artifacts: output/ # optional, default is build/output/images/
+          # Build image or kernel
+          armbian_target: build
+          # Select hardware platform
+          armbian_board: pocketchip-sd
+          # Armbian user interface
+          armbian_ui: xfac
+          # Armbian lists of extensions
+          # armbian_extensions: # optional, default is 
+          armbian_release_tittle: Armbian Image for Pocket C.H.I.P
+
