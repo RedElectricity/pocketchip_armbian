@@ -24,10 +24,11 @@ jobs:
       - name: Fetch Repo
         run: |
             git clone https://github.com/armbian/build
-            cd build
+            
 
       - name: Build
         run: |
+            cd build
             ./compile.sh build \
             BOARD=pocketchip-sd \
             BRANCH=current \
