@@ -41,3 +41,12 @@ jobs:
             RELEASE=noble \
             EXPERT=YES \
             KERNEL_COMPILER=clang
+
+      - name: Post-Build
+        run: |
+            tree .
+
+      - name: Release
+        uses: actions/upload-artifact@v4
+        with:
+          path: "output/images/*/*/Armbian_*.*"
