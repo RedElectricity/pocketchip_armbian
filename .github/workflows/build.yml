@@ -29,6 +29,6 @@ jobs:
           # Select hardware platform
           armbian_board: pocketchip-sd
           # Armbian user interface
-          armbian_ui: xfac
+          armbian_ui: xfce
           armbian_release_tittle: Armbian Image for Pocket C.H.I.P
 
