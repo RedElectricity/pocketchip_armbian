@@ -7,8 +7,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,14 +25,10 @@ jobs:
         with:
           # GitHub installation access token
           armbian_token: "${{ secrets.GITHUB_TOKEN }}"
-          armbian_artifacts: output/ # optional, default is build/output/images/
-          # Build image or kernel
           armbian_target: build
           # Select hardware platform
           armbian_board: pocketchip-sd
           # Armbian user interface
           armbian_ui: xfac
-          # Armbian lists of extensions
-          # armbian_extensions: # optional, default is 
           armbian_release_tittle: Armbian Image for Pocket C.H.I.P
 
