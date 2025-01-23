@@ -20,15 +20,25 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Rebuild Armbian
-        uses: armbian/build@v25.2.0-trunk.357
-        with:
-          # GitHub installation access token
-          armbian_token: "${{ secrets.GH_TOKEN }}"
-          armbian_target: build
-          # Select hardware platform
-          armbian_board: pocketchip-sd
-          # Armbian user interface
-          armbian_ui: xfce
-          armbian_release_tittle: Armbian Image for Pocket C.H.I.P
+      - name: Update Env
+        run: |
+            apt update
+    
+      - name: Fetch Repo
+        run: |
+            git clone https://github.com/armbian/build
+            cd build
 
+      - name: Build
+        run: |
+            ./compile.sh build \
+            BOARD=pocketchip-sd \
+            BRANCH=current \
+            BUILD_DESKTOP=yes \
+            BUILD_MINIMAL=no \
+            DESKTOP_ENVIRONMENT=xfce \
+            DESKTOP_ENVIRONMENT_CONFIG_NAME=config_base \
+            KERNEL_CONFIGURE=no \
+            RELEASE=noble \
+            EXPERT=YES \
+            KERNEL_COMPILER=clang
