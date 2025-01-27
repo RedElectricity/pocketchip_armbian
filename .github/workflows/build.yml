@@ -34,13 +34,14 @@ jobs:
             BRANCH=current \
             BUILD_DESKTOP=yes \
             BUILD_MINIMAL=no \
-            DESKTOP_APPGROUPS_SELECTED='browsers desktop_tools' \
+            DESKTOP_APPGROUPS_SELECTED='desktop_tools' \
             DESKTOP_ENVIRONMENT=xfce \
             DESKTOP_ENVIRONMENT_CONFIG_NAME=config_base \
             KERNEL_CONFIGURE=no \
             RELEASE=noble \
             EXPERT=YES \
-            KERNEL_COMPILER=clang
+            KERNEL_COMPILER=clang \
+            RELEASE=noble
 
       - name: Post-Build
         run: |
