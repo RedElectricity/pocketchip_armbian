@@ -50,4 +50,4 @@ jobs:
       - name: Release
         uses: actions/upload-artifact@v4
         with:
-          path: "output/images/*/*/Armbian_*.*"
+          path: "build/output/"
